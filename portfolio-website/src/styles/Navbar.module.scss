@@ -1,0 +1,44 @@
+// styles/Navbar.module.scss
+  .navbar {
+    background-color: #333;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .navContainer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s;
+  }
+  
+  .navContainer a:hover {
+    color: #ffd700;
+  }
+  
+  // Add hover effect and transitions for an elegant look
+  .navContainer a {
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+  }
+  
+  // Add a gradient border to the navbar for a creative touch
+  .navbar::after {
+    content: '';
+    display: block;
+    height: 4px;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    margin-top: 0.5rem;
+  }
+  
