@@ -56,7 +56,8 @@ export default function About() {
         </section>
         <section className={styles.funFactsSection}>
           <h2>Fun Facts</h2>
-          <p>When I'm not coding, I love hiking, playing sports like Cricket , Soccer and TableTennis.</p>
+          <p><p>When I&apos;m not coding, I love hiking, playing sports like Cricket, Soccer, and Table Tennis.</p>
+          </p>
         </section>
       </main>
       <Footer />
