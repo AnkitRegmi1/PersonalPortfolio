@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.scss';
 import ChatBot from '../components/ChatBot';
 import { useState } from 'react';
 import CommandLine from '../components/CommandLine';
+import Image from 'next/image';
 
 export default function Home() {
   const [showResume, setShowResume] = useState(false);
@@ -15,28 +16,60 @@ export default function Home() {
       {!useCommandLine && <Navbar />}
       {!useCommandLine && (
         <div className={styles.viewModeContainer}>
-          <button onClick={() => setUseCommandLine(false)} className={`${styles.viewModeButton} ${!useCommandLine ? styles.active : ''}`}>Graphical Mode</button>
-          <button onClick={() => setUseCommandLine(true)} className={`${styles.viewModeButton} ${useCommandLine ? styles.active : ''}`}>Command Line Mode</button>
+          <button
+            onClick={() => setUseCommandLine(false)}
+            className={`${styles.viewModeButton} ${!useCommandLine ? styles.active : ''}`}
+          >
+            Graphical Mode
+          </button>
+          <button
+            onClick={() => setUseCommandLine(true)}
+            className={`${styles.viewModeButton} ${useCommandLine ? styles.active : ''}`}
+          >
+            Command Line Mode
+          </button>
         </div>
       )}
       {!useCommandLine ? (
         <>
           <div className={styles.heroWithImageCentered}>
             <div className={styles.heroSectionContainer}>
-              <img src="/profile.jpeg" alt="Profile Picture" className={styles.profileImage} />
+              <Image
+                src="/profile.jpeg"
+                alt="Profile Picture"
+                width={150}
+                height={150}
+                className={styles.profileImage}
+              />
               <HeroSection />
             </div>
           </div>
           <div className={styles.resumeLinkContainer}>
-            <button onClick={() => setShowResume(true)} className={styles.resumeButton}>View my Resume</button>
+            <button
+              onClick={() => setShowResume(true)}
+              className={styles.resumeButton}
+            >
+              View my Resume
+            </button>
           </div>
           {showResume && (
             <div className={styles.resumePopup}>
               <div className={styles.resumePopupContent}>
-                <button className={styles.closeButton} onClick={() => setShowResume(false)}>Close</button>
-                <iframe src="/resume.pdf" className={styles.resumeIframe}></iframe>
+                <button
+                  className={styles.closeButton}
+                  onClick={() => setShowResume(false)}
+                >
+                  Close
+                </button>
+                <iframe
+                  src="/resume.pdf"
+                  className={styles.resumeIframe}
+                  title="My Resume"
+                ></iframe>
                 <a href="/resume.pdf" download>
-                  <button className={styles.downloadResumeButton}>Download Resume</button>
+                  <button className={styles.downloadResumeButton}>
+                    Download Resume
+                  </button>
                 </a>
               </div>
             </div>
@@ -49,7 +82,13 @@ export default function Home() {
               rel="noopener noreferrer"
               className={styles.socialLink}
             >
-              <img src="/linkedin-logo.png" alt="LinkedIn Logo" className={styles.socialLogo} />
+              <Image
+                src="/linkedin-logo.png"
+                alt="LinkedIn Logo"
+                width={40}
+                height={40}
+                className={styles.socialLogo}
+              />
             </a>
             <a
               href="https://github.com/AnkitRegmi1"
@@ -57,13 +96,23 @@ export default function Home() {
               rel="noopener noreferrer"
               className={styles.socialLink}
             >
-              <img src="/github-logo.png" alt="GitHub Logo" className={styles.socialLogo} />
+              <Image
+                src="/github-logo.png"
+                alt="GitHub Logo"
+                width={40}
+                height={40}
+                className={styles.socialLogo}
+              />
             </a>
           </div>
           <main className={styles.homeContent}>
             <section className={styles.introSection}>
               <h2>Why Work With Me?</h2>
-              <p>I am passionate about creating impactful projects that leverage modern web technologies and AI to solve real-world problems. I am always learning and eager to make a difference.</p>
+              <p>
+                I am passionate about creating impactful projects that leverage
+                modern web technologies and AI to solve real-world problems. I am
+                always learning and eager to make a difference.
+              </p>
             </section>
             <section className={styles.skillsSection}>
               <h2>Skills & Technologies</h2>
