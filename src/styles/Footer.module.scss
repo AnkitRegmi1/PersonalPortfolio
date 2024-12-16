@@ -1,15 +1,13 @@
-// styles/Footer.module.scss
-
+/* styles/Footer.module.scss */
 .footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-    width: 100%;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 1000; // Make sure footer stays on top of other content
-  }
-  
+  background-color: #333333;
+  color: var(--text-color-primary);
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}

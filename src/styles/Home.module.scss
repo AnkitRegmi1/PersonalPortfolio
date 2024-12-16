@@ -1,24 +1,23 @@
 /* styles/Home.module.scss */
+@import './_variables';
 
-/* Global Theme Colors (can be moved to a global styles file) */
-:root {
-    --primary-color: #d19a66; /* Orange accent color */
-    --secondary-color: #d19a60; /* Darker orange for hover states */
-    --background-color: #000000; /* Black background */
-    --text-color-primary: #ffffff; /* White primary text color */
-    --text-color-secondary: #bbbbbb; /* Light grey secondary text color */
-  }
-  
-  /* Home Container */
-  .homeContainer {
-    position: relative;
-    padding-bottom: 150px; /* Increase space at the bottom to make room for the chatbot */
-    min-height: 100vh;
-    background-color: var(--background-color); /* Consistent light background for all pages */
-    color: var(--text-color-primary);
-  }
-  
-  /* Footer */
+.homeContainer {
+  position: relative;
+  padding-bottom: 150px; /* Increase space at the bottom to make room for the chatbot */
+  min-height: 100vh;
+  background-color: $background-color;
+  color: $text-color-primary;
+}
+
+.heroSectionContainer {
+  text-align: center;
+  background-color: $background-color;
+  color: $text-color-primary;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Footer */
   .footer {
     position: relative;
     z-index: 1;

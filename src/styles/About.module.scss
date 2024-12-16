@@ -1,142 +1,133 @@
 /* styles/About.module.scss */
+@import './_variables';
 
-/* Global Theme Colors (can be moved to a global styles file) */
-:root {
-    --primary-color: #d19a66; /* Orange accent color */
-    --secondary-color:  #d19a60; /* Darker orange for hover states */
-    --background-color: #000000; /* Black background */
-    --text-color-primary: #ffffff; /* White primary text color */
-    --text-color-secondary: #bbbbbb; /* Light grey secondary text color */
+.aboutContainer {
+  padding: 4rem 2rem;
+  background-color: $background-color;
+  padding-bottom: 8rem; /* Add extra padding at the bottom to make space for the footer */
+  font-family: $font-family-sans-serif;
+  color: $text-color-primary;
+}
+
+.timelineSection {
+  margin-top: 4rem;
+  position: relative;
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timelineItem {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.timelineItem:nth-child(odd) .timelineContentLeft {
+  order: 1;
+}
+
+.timelineItem:nth-child(even) .timelineContentRight {
+  order: -1;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--primary-color);
+  z-index: 1;
+}
+
+.timelineContent {
+  background: #222222; /* Dark grey background for cards */
+  border: 1px solid #444444;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  position: relative;
+  width: 45%;
+  z-index: 2;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+.timelineContentLeft {
+  text-align: right;
+  margin-right: 5%;
+}
+
+.timelineContentRight {
+  text-align: left;
+  margin-left: 5%;
+}
+
+.timelineContent:hover {
+  transform: scale(1.05);
+}
+
+.timelineHeading {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.timelineContent p {
+  color: var(--text-color-secondary);
+}
+
+.funFactsSection {
+  margin-top: 4rem;
+  padding: 2rem;
+  background: #222222; /* Dark grey background for fun facts */
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  color: var(--text-color-primary);
+}
+
+.funFactsSection h2 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.funFactsSection p {
+  font-size: 1.2rem;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .timelineSection h2 {
+    font-size: 2rem;
   }
-  
-  .aboutContainer {
-    padding: 4rem 2rem;
-    background-color: var(--background-color);
-    padding-bottom: 8rem; /* Add extra padding at the bottom to make space for the footer */
-    font-family: 'Arial, sans-serif';
-    color: var(--text-color-primary);
-  }
-  
-  .timelineSection {
-    margin-top: 4rem;
-    position: relative;
-  }
-  
-  .timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
+
   .timelineItem {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 3rem;
-    position: relative;
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .timelineItem:nth-child(odd) .timelineContentLeft {
-    order: 1;
-  }
-  
-  .timelineItem:nth-child(even) .timelineContentRight {
-    order: -1;
-  }
-  
-  .timelineLine {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: var(--primary-color);
-    z-index: 1;
-  }
-  
+
   .timelineContent {
-    background: #222222; /* Dark grey background for cards */
-    border: 1px solid #444444;
-    padding: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    position: relative;
-    width: 45%;
-    z-index: 2;
-    transition: transform 0.3s ease-in-out;
-    border-radius: 10px;
-  }
-  
-  .timelineContentLeft {
-    text-align: right;
-    margin-right: 5%;
-  }
-  
-  .timelineContentRight {
-    text-align: left;
-    margin-left: 5%;
-  }
-  
-  .timelineContent:hover {
-    transform: scale(1.05);
-  }
-  
-  .timelineHeading {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-  }
-  
-  .timelineContent p {
-    color: var(--text-color-secondary);
-  }
-  
-  .funFactsSection {
-    margin-top: 4rem;
-    padding: 2rem;
-    background: #222222; /* Dark grey background for fun facts */
-    border-radius: 15px;
+    width: 80%;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    color: var(--text-color-primary);
   }
-  
-  .funFactsSection h2 {
-    color: var(--primary-color);
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+
+  .timelineLine {
+    left: 25px;
+    width: 2px;
   }
-  
-  .funFactsSection p {
-    font-size: 1.2rem;
+
+  .timelineContentLeft,
+  .timelineContentRight {
+    margin: 0;
   }
-  
-  /* Responsive Styling */
-  @media (max-width: 768px) {
-    .timelineSection h2 {
-      font-size: 2rem;
-    }
-  
-    .timelineItem {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .timelineContent {
-      width: 80%;
-      text-align: center;
-    }
-  
-    .timelineLine {
-      left: 25px;
-      width: 2px;
-    }
-  
-    .timelineContentLeft,
-    .timelineContentRight {
-      margin: 0;
-    }
-  
-    .funFactsSection {
-      padding: 1.5rem;
-    }
+
+  .funFactsSection {
+    padding: 1.5rem;
   }
-  
+}

@@ -55,10 +55,10 @@ export default function About() {
           </div>
         </section>
         <section className={styles.funFactsSection}>
-          <h2>Fun Facts</h2>
-          <p><p>When I&apos;m not coding, I love hiking, playing sports like Cricket, Soccer, and Table Tennis.</p>
-          </p>
-        </section>
+  <h2>Fun Facts</h2>
+  <p>When I&apos;m not coding, I love hiking, playing sports like Cricket, Soccer, and Table Tennis.</p>
+</section>
+
       </main>
       <Footer />
     </>

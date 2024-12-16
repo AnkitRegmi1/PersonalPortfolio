@@ -1,5 +1,1 @@
-const CHUNK_PUBLIC_PATH = "server/pages/_app.js";
-const runtime = require("../chunks/ssr/[turbopack]_runtime.js");
-runtime.loadChunk("server/chunks/ssr/[root of the server]__a6c87d._.js");
-runtime.loadChunk("server/chunks/ssr/src_styles_globals_scss_8e4c59.css");
-module.exports = runtime.getOrInstantiateRuntimeModule("[project]/src/pages/_app.js [ssr] (ecmascript)", CHUNK_PUBLIC_PATH).exports;
+(()=>{var e={};e.id=888,e.ids=[888],e.modules={7493:(e,t,r)=>{"use strict";r.r(t),r.d(t,{default:()=>a});var s=r(997),u=r(6689);let i=(0,u.createContext)();function l({children:e}){let[t,r]=(0,u.useState)("light");return(0,s.jsx)(i.Provider,{value:{theme:t,toggleTheme:()=>{let e="light"===t?"dark":"light";r(e),document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e)}},children:e})}r(6961);let a=function({Component:e,pageProps:t}){return(0,s.jsx)(l,{children:(0,s.jsx)(e,{...t})})}},6961:()=>{},6689:e=>{"use strict";e.exports=require("react")},997:e=>{"use strict";e.exports=require("react/jsx-runtime")}};var t=require("../webpack-runtime.js");t.C(e);var r=t(t.s=7493);module.exports=r})();
