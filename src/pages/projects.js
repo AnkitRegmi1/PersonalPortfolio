@@ -10,8 +10,11 @@ import { motion } from 'framer-motion';
 const projects = [
   { id: 1, name: 'Private Club', description: 'A platform where you can join multiple clubs if you have the access code and then upvote and downvote messages anonymously', link: 'https://github.com/AnkitRegmi1/Private-Club' },
   { id: 2, name: 'Alumni Giving Prediction', description: 'A data science project that predicts alumni donation behaviors.' },
-  { id: 3, name: 'Blind Melodies', description: 'Website that teaches blind people how to play guitar.', link: 'https://github.com/ankit-regmi/alumni-giving-prediction' },
+  { id: 3, name: 'TruSwap', description: 'A full stackplatform to sell rent and buy items for Truman State University', link: 'https://github.com/AnkitRegmi1/TruSwap' },
   { id: 4, name: 'Personal Blog Website', description: 'My Personal Blog about my life.', link: 'https://github.com/AnkitRegmi1/BlogPersonal' },
+  { id: 5, name: 'AI Image Detector', description: 'A chrome browser extension that detects AI generated images', link: 'https://github.com/AnkitRegmi1/ai_image_detector' },
+  { id: 6, name: 'BookStore', description: 'A full stack platform to buy and sell books with payment integration', link: 'https://github.com/AnkitRegmi1/BookStore' },
+  { id: 7, name: 'Personal Portfolio Website', description: 'Code for this website', link: 'https://github.com/AnkitRegmi1/PersonalPortfolio' },
   
 ];
 
