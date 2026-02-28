@@ -34,7 +34,7 @@ export default function ResearchDetail({ project }) {
         <Header />
         <main className="container mx-auto px-4 py-16 md:py-24">
           <Link
-            href="/#research"
+            href="/"
             onClick={() => typeof window !== 'undefined' && window.sessionStorage.setItem('scrollToResearch', '1')}
             className="inline-flex items-center gap-2 text-sm uppercase tracking-wide opacity-70 hover:opacity-100 mb-12 transition-opacity"
             style={{ color: 'var(--foreground)' }}

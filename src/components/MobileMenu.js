@@ -1,21 +1,28 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { scrollToSection } from '../utils/scroll';
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = [
-    { name: 'About', href: '/#about' },
-    { name: 'Work', href: '/#work' },
-    { name: 'Experience', href: '/#experience' },
-    { name: 'Research', href: '/#research' },
-    { name: 'Tech Stack', href: '/#tech-stack' },
-    { name: 'Voluntary Work', href: '/#voluntary-work' },
-    { name: 'Contact', href: '/#contact' },
+    { name: 'About', sectionId: 'about' },
+    { name: 'Work', sectionId: 'work' },
+    { name: 'Experience', sectionId: 'experience' },
+    { name: 'Research', sectionId: 'research' },
+    { name: 'Tech Stack', sectionId: 'tech-stack' },
+    { name: 'Voluntary Work', sectionId: 'voluntary-work' },
+    { name: 'Contact', sectionId: 'contact' },
   ];
 
-  const handleLinkClick = () => setIsOpen(false);
+  const handleLinkClick = (e, sectionId) => {
+    if (typeof window !== 'undefined' && window.location.pathname === '/') {
+      e.preventDefault();
+      scrollToSection(sectionId);
+    }
+    setIsOpen(false);
+  };
 
   return (
     <div className="md:hidden">
@@ -55,8 +62,8 @@ export default function MobileMenu() {
                 {links.map((link) => (
                   <a
                     key={link.name}
-                    href={link.href}
-                    onClick={handleLinkClick}
+                    href="/"
+                    onClick={(e) => handleLinkClick(e, link.sectionId)}
                     className="block p-4 border border-border text-foreground uppercase tracking-tight transition-colors hover:bg-foreground hover:text-background"
                   >
                     {link.name}

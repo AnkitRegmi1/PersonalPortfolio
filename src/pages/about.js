@@ -1,5 +1,5 @@
 export async function getServerSideProps() {
-  return { redirect: { destination: '/#about', permanent: false } };
+  return { redirect: { destination: '/', permanent: false } };
 }
 
 export default function About() {

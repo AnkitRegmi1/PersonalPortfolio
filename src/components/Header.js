@@ -1,6 +1,21 @@
 import { useTheme } from '../context/ThemeContext';
 import MobileMenu from './MobileMenu';
 import { Leaf, Moon, Sun } from 'lucide-react';
+import { scrollToSection } from '../utils/scroll';
+
+function NavLink({ sectionId, children }) {
+  const handleClick = (e) => {
+    if (typeof window !== 'undefined' && window.location.pathname === '/') {
+      e.preventDefault();
+      scrollToSection(sectionId);
+    }
+  };
+  return (
+    <a href="/" onClick={handleClick} className="transition-opacity hover:opacity-60" style={{ color: 'var(--foreground)' }}>
+      {children}
+    </a>
+  );
+}
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
@@ -22,13 +37,13 @@ export default function Header() {
         </a>
 
         <div className="hidden md:flex items-center gap-8">
-          <a href="/#about" className="transition-opacity hover:opacity-60" style={{ color: 'var(--foreground)' }}>About</a>
-          <a href="/#work" className="transition-opacity hover:opacity-60" style={{ color: 'var(--foreground)' }}>Work</a>
-          <a href="/#experience" className="transition-opacity hover:opacity-60" style={{ color: 'var(--foreground)' }}>Experience</a>
-          <a href="/#research" className="transition-opacity hover:opacity-60" style={{ color: 'var(--foreground)' }}>Research</a>
-          <a href="/#tech-stack" className="transition-opacity hover:opacity-60" style={{ color: 'var(--foreground)' }}>Tech Stack</a>
-          <a href="/#voluntary-work" className="transition-opacity hover:opacity-60" style={{ color: 'var(--foreground)' }}>Voluntary Work</a>
-          <a href="/#contact" className="transition-opacity hover:opacity-60" style={{ color: 'var(--foreground)' }}>Contact</a>
+          <NavLink sectionId="about">About</NavLink>
+          <NavLink sectionId="work">Work</NavLink>
+          <NavLink sectionId="experience">Experience</NavLink>
+          <NavLink sectionId="research">Research</NavLink>
+          <NavLink sectionId="tech-stack">Tech Stack</NavLink>
+          <NavLink sectionId="voluntary-work">Voluntary Work</NavLink>
+          <NavLink sectionId="contact">Contact</NavLink>
         </div>
 
         <div className="flex items-center gap-4">

@@ -14,6 +14,7 @@ import CustomCursor from '../components/CustomCursor';
 import ScrollToTop from '../components/ScrollToTop';
 import MobileBottomNav from '../components/MobileBottomNav';
 import Preloader from '../components/Preloader';
+import { scrollToSection, clearUrlHash } from '../utils/scroll';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -33,10 +34,21 @@ export default function Home() {
     if (window.sessionStorage.getItem('scrollToResearch') !== '1') return;
     window.sessionStorage.removeItem('scrollToResearch');
     const t = setTimeout(() => {
-      const el = document.getElementById('research');
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      scrollToSection('research');
     }, 100);
     return () => clearTimeout(t);
+  }, [loading]);
+
+  // If page loaded with a hash (e.g. /#research), scroll to section then show clean URL (ankitregmi.com only)
+  useEffect(() => {
+    if (loading) return;
+    if (typeof window === 'undefined') return;
+    const hash = window.location.hash;
+    if (!hash) return;
+    const sectionId = hash.slice(1).trim();
+    if (!sectionId) return;
+    scrollToSection(sectionId);
+    clearUrlHash();
   }, [loading]);
 
   return (
