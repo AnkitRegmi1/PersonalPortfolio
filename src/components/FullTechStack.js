@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Database,
@@ -12,6 +13,7 @@ import {
   CalendarCheck,
   GitBranch,
   Sparkles,
+  Cloud,
 } from 'lucide-react';
 
 const CDN = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
@@ -29,6 +31,7 @@ const LUCIDE_ICONS = {
   CalendarCheck,
   GitBranch,
   Sparkles,
+  Cloud,
 };
 
 const categories = [
@@ -68,7 +71,7 @@ const categories = [
     title: 'Cloud & DevOps',
     items: [
       { name: 'Microsoft Azure', icon: 'azure/azure-original' },
-      { name: 'AWS', icon: 'amazonwebservices/amazonwebservices-original' },
+      { name: 'AWS', icon: 'amazonwebservices/amazonwebservices-original', iconUrlOverride: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg', iconFallback: 'Cloud' },
       { name: 'Git', icon: 'git/git-original' },
       { name: 'CI/CD', icon: null, lucideIcon: 'GitBranch' },
     ],
@@ -96,9 +99,14 @@ const categories = [
 ];
 
 function TechItem({ item }) {
-  const iconUrl = item.icon ? `${CDN}/${item.icon}.svg` : null;
+  const [imgError, setImgError] = useState(false);
+  const iconUrl = item.icon && !imgError
+    ? (item.iconUrlOverride || `${CDN}/${item.icon}.svg`)
+    : null;
+  const useFallback = imgError && item.iconFallback;
+  const FallbackIcon = useFallback && LUCIDE_ICONS[item.iconFallback] ? LUCIDE_ICONS[item.iconFallback] : null;
   const LucideIcon = item.lucideIcon ? LUCIDE_ICONS[item.lucideIcon] : null;
-  const showIcon = iconUrl || LucideIcon;
+  const showIcon = iconUrl || FallbackIcon || LucideIcon;
 
   return (
     <div
@@ -106,7 +114,16 @@ function TechItem({ item }) {
       style={{ backgroundColor: 'var(--muted)', color: 'var(--foreground)' }}
     >
       {iconUrl ? (
-        <img src={iconUrl} alt="" className="w-6 h-6 shrink-0" width={24} height={24} />
+        <img
+          src={iconUrl}
+          alt=""
+          className="w-6 h-6 shrink-0"
+          width={24}
+          height={24}
+          onError={() => setImgError(true)}
+        />
+      ) : FallbackIcon ? (
+        <FallbackIcon className="w-5 h-5 shrink-0 opacity-80" strokeWidth={1.5} />
       ) : LucideIcon ? (
         <LucideIcon className="w-5 h-5 shrink-0 opacity-80" strokeWidth={1.5} />
       ) : (
