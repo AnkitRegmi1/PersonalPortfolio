@@ -5,7 +5,7 @@ import { ArrowUpRight } from 'lucide-react';
 const projects = [
   { name: 'TruSwap', timeframe: '2024', discipline: 'Full Stack / Dev', tools: ['React', 'Node.js', 'Database'], industry: 'E-Commerce', url: 'https://github.com/AnkitRegmi1/TruSwap', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1080', excerpt: 'E-commerce platform for campus buying and selling.', previewType: 'image' },
   { name: 'AI Image Detector', timeframe: '2024', discipline: 'Dev / AI', tools: ['Chrome Extension', 'AI', 'JavaScript'], industry: 'AI', url: 'https://github.com/AnkitRegmi1/ai_image_detector', image: 'https://images.unsplash.com/photo-1725798451557-fc60db3eb6a2?w=1080', excerpt: 'Browser extension to detect AI-generated images.', previewType: 'custom' },
-  { name: 'BookStore', timeframe: '2024', discipline: 'Full Stack', tools: ['React', 'Payment', 'Backend'], industry: 'Retail', url: 'https://github.com/AnkitRegmi1/BookStore', image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=1080', excerpt: 'Full-stack bookstore with payments and inventory.', previewType: 'image' },
+  { name: 'BookStore', timeframe: '2024', discipline: 'Full Stack', tools: ['PHP', 'HTML', 'CSS', 'JavaScript'], industry: 'Retail', url: 'https://github.com/AnkitRegmi1/BookStore', image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=1080', excerpt: 'Full-stack bookstore with PHP, HTML, CSS and JavaScript.', previewType: 'image' },
 ];
 
 function PreviewMagnifyingGlass() {
