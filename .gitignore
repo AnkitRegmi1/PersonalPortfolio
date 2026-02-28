@@ -1,0 +1,4 @@
+node_modules
+
+# Research PDFs (keep local only, do not commit)
+src/data/*.pdf

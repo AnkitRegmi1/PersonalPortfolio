@@ -1,0 +1,37 @@
+/* Neo-brutalist theme variables */
+:root {
+  --font-size: 16px;
+  --theme-bg: #ffffff;
+  --theme-text: #000000;
+  --theme-border: #000000;
+  --theme-accent: #000000;
+  --background: var(--theme-bg);
+  --foreground: var(--theme-text);
+  --muted: #f1f5f9;
+}
+
+/* Jungle Theme */
+[data-theme="jungle"] {
+  --theme-bg: #E8F5E3;
+  --theme-text: #1A4D2E;
+  --theme-border: #2D5F3F;
+  --theme-accent: #4A7C59;
+  --muted: #d4e8cf;
+}
+
+/* Moon Theme */
+[data-theme="moon"] {
+  --theme-bg: #1A1B26;
+  --theme-text: #C0CAF5;
+  --theme-border: #565F89;
+  --theme-accent: #7AA2F7;
+  --muted: #24283b;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --theme-bg: #ffffff;
+  --theme-text: #000000;
+  --theme-border: #000000;
+  --theme-accent: #000000;
+}
