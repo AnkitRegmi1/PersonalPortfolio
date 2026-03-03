@@ -3,9 +3,51 @@ import { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 const projects = [
-  { name: 'TruSwap', timeframe: '2025', discipline: 'Full Stack / Dev', tools: ['React', 'Node.js', 'Database'], industry: 'E-Commerce', url: 'https://github.com/AnkitRegmi1/TruSwap', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1080', excerpt: 'E-commerce platform for campus buying and selling.', previewType: 'image' },
-  { name: 'AI Image Detector', timeframe: '2024', discipline: 'Dev / AI', tools: ['Chrome Extension', 'AI', 'JavaScript'], industry: 'AI', url: 'https://github.com/AnkitRegmi1/ai_image_detector', image: 'https://images.unsplash.com/photo-1725798451557-fc60db3eb6a2?w=1080', excerpt: 'Browser extension to detect AI-generated images.', previewType: 'custom' },
-  { name: 'BookStore', timeframe: '2025', discipline: 'Full Stack', tools: ['PHP', 'HTML', 'CSS', 'JavaScript'], industry: 'Retail', url: 'https://github.com/AnkitRegmi1/BookStore', image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=1080', excerpt: 'Full-stack bookstore with PHP, HTML, CSS and JavaScript.', previewType: 'image' },
+  {
+    name: 'TruSwap',
+    timeframe: '2025',
+    discipline: 'Full Stack / Dev',
+    tools: ['React', 'Node.js', 'Database'],
+    industry: 'E-Commerce',
+    url: 'https://github.com/AnkitRegmi1/TruSwap',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1080',
+    excerpt: 'E-commerce platform for campus buying and selling.',
+    previewType: 'image',
+  },
+  {
+    name: 'AI Image Detector',
+    timeframe: '2024',
+    discipline: 'Dev / AI',
+    tools: ['Chrome Extension', 'AI', 'JavaScript'],
+    industry: 'AI',
+    url: 'https://github.com/AnkitRegmi1/ai_image_detector',
+    image: 'https://images.unsplash.com/photo-1725798451557-fc60db3eb6a2?w=1080',
+    excerpt: 'Browser extension to detect AI-generated images.',
+    previewType: 'custom',
+  },
+  {
+    name: 'TecBlog AI',
+    timeframe: '2026',
+    discipline: 'Full Stack / AI Agents',
+    tools: ['Next.js', 'CrewAI', 'Groq', 'GitHub Actions', 'GitHub API'],
+    industry: 'Developer Tools',
+    url: 'https://github.com/AnkitRegmi1/TecBlogAI',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1080',
+    excerpt:
+      'Automated blog that turns GitHub-backed content into step-by-step technical posts with AI agents.',
+    previewType: 'image',
+  },
+  {
+    name: 'BookStore',
+    timeframe: '2025',
+    discipline: 'Full Stack',
+    tools: ['PHP', 'HTML', 'CSS', 'JavaScript'],
+    industry: 'Retail',
+    url: 'https://github.com/AnkitRegmi1/BookStore',
+    image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=1080',
+    excerpt: 'Full-stack bookstore with PHP, HTML, CSS and JavaScript.',
+    previewType: 'image',
+  },
 ];
 
 function PreviewMagnifyingGlass() {
@@ -30,8 +72,16 @@ function PreviewMagnifyingGlass() {
 export default function ProjectsTable() {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [startIndex, setStartIndex] = useState(0);
 
   const handleMouseMove = (e) => setMousePosition({ x: e.clientX, y: e.clientY });
+
+  const canGoPrev = startIndex > 0;
+  const canGoNext = startIndex + 3 < projects.length;
+
+  const visibleProjects = projects
+    .map((project, index) => ({ project, index }))
+    .slice(startIndex, startIndex + 3);
 
   return (
     <section
@@ -45,18 +95,40 @@ export default function ProjectsTable() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-4xl md:text-5xl uppercase tracking-tight mb-12" style={{ color: 'var(--foreground)' }}>
-          Selected Work
-        </h2>
+        <div className="flex items-center justify-between mb-12 gap-4">
+          <h2 className="text-4xl md:text-5xl uppercase tracking-tight" style={{ color: 'var(--foreground)' }}>
+            Selected Work
+          </h2>
+          <div className="hidden md:flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => canGoPrev && setStartIndex((prev) => Math.max(0, prev - 1))}
+              disabled={!canGoPrev}
+              className="w-9 h-9 border flex items-center justify-center text-sm uppercase tracking-tight disabled:opacity-30 focus-ring-theme"
+              style={{ borderColor: 'var(--theme-border)', color: 'var(--foreground)' }}
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              onClick={() => canGoNext && setStartIndex((prev) => Math.min(projects.length - 3, prev + 1))}
+              disabled={!canGoNext}
+              className="w-9 h-9 border flex items-center justify-center text-sm uppercase tracking-tight disabled:opacity-30 focus-ring-theme"
+              style={{ borderColor: 'var(--theme-border)', color: 'var(--foreground)' }}
+            >
+              ›
+            </button>
+          </div>
+        </div>
 
-        {/* Bento grid — desktop: 3 equal cards */}
+        {/* Bento grid — desktop: 3 equal cards with slider */}
         <div
           className="hidden md:grid md:grid-cols-3 gap-4 md:gap-5"
           onMouseMove={handleMouseMove}
         >
-          {projects.map((project, index) => (
+          {visibleProjects.map(({ project, index }) => (
             <a
-              key={index}
+              key={project.name}
               href={project.url}
               target={project.url.startsWith('http') ? '_blank' : undefined}
               rel={project.url.startsWith('http') ? 'noopener noreferrer' : undefined}
@@ -87,7 +159,7 @@ export default function ProjectsTable() {
         <div className="md:hidden space-y-4">
           {projects.map((project, index) => (
             <a
-              key={index}
+              key={project.name}
               href={project.url}
               target={project.url.startsWith('http') ? '_blank' : undefined}
               rel={project.url.startsWith('http') ? 'noopener noreferrer' : undefined}
@@ -110,7 +182,7 @@ export default function ProjectsTable() {
         </div>
       </motion.div>
 
-      {hoveredProject !== null && (
+      {hoveredProject !== null && projects[hoveredProject] && (
         <motion.div
           className="hidden md:block fixed pointer-events-none z-50 w-80 h-52 border overflow-hidden flex items-center justify-center"
           style={{ left: mousePosition.x + 20, top: mousePosition.y + 20, borderColor: 'var(--theme-border)', backgroundColor: 'var(--theme-bg)' }}
